@@ -1,0 +1,27 @@
+spring:
+  profiles: development, production
+
+  application:
+    name: core
+
+  thymeleaf:
+    prefix: classpath:/frontend/
+    suffix: .html
+
+  cache:
+    type: caffeine
+    cache-names: blogs
+
+server:
+  port: 9091
+
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus

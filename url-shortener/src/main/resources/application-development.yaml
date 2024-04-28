@@ -1,0 +1,13 @@
+spring:
+  profiles: development
+
+  config:
+    import: optional:secrets.yaml
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/osable
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http\://localhost:8761/eureka

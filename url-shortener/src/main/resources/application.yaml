@@ -1,0 +1,24 @@
+spring:
+  profiles: development, production
+
+  application:
+    name: url-shortener
+
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+  cache:
+    type: caffeine
+    cache-names: url
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 10101

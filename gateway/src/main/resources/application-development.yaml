@@ -1,0 +1,12 @@
+spring:
+  profiles: development
+
+  data:
+    redis:
+      host: 192.168.1.120
+      port: 6379
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http\://localhost\:8761/eureka

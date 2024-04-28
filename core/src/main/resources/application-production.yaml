@@ -1,0 +1,13 @@
+spring:
+  profiles: production
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http\://discovery.osable.svc.cluster.local\:8761/eureka
+  instance:
+    hostname: core.osable.svc.cluster.local
+
+# env:
+# spring.security.oauth2.client.registration.github.client-id
+# spring.security.oauth2.client.registration.github.client-secret

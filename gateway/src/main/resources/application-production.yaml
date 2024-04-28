@@ -1,0 +1,14 @@
+spring:
+  profiles: production
+
+  data:
+    redis:
+      host: redis.osable.svc.cluster.local
+      port: 6379
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http\://discovery.osable.svc.cluster.local\:8761/eureka
+  instance:
+    hostname: gateway.osable.svc.cluster.local

@@ -1,0 +1,26 @@
+# Ignore .gradle, gradle, .idea and build directories
+/.gradle/
+/gradle/
+/.idea/
+/build/
+
+/build-logic/.gradle/
+/build-logic/build/
+
+/core/.gradle/
+/core/build/
+
+/gateway/.gradle/
+/gateway/build/
+
+/discovery/build/
+/discovery/.gradle/
+
+/url-shortener/build/
+/url-shortener/.gradle/
+
+# Avoid leaking secrets, please
+secrets.yaml
+
+# Don't include any local test blogs
+/blogs/

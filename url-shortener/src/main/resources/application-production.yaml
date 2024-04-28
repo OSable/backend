@@ -1,0 +1,16 @@
+spring:
+  profiles: production
+
+  datasource:
+    url: jdbc:mysql://mysql.osable.svc.cluster.local:3306/osable
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http\://discovery.osable.svc.cluster.local\:8761/eureka
+  instance:
+    hostname: url-shortener.osable.svc.cluster.local
+
+# env:
+# spring.datasource.username
+# spring.datasource.password
