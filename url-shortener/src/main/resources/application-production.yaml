@@ -1,5 +1,7 @@
 spring:
-  profiles: production
+  config:
+    activate:
+      on-profile: production
 
   datasource:
     url: jdbc:mysql://mysql.osable.svc.cluster.local:3306/osable
