@@ -34,7 +34,7 @@ dependencies {
 	// DB
 	// transitively includes HikariCP, Hibernate, Spring JPA & ORM
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("com.mysql:mysql-connector-j:8.0.32")
+	implementation("com.mysql:mysql-connector-j:8.2.0")
 
 	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

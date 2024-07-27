@@ -1,11 +1,13 @@
 spring:
-  profiles: development
 
   config:
+    activate:
+      on-profile: development
     import: optional:secrets.yaml
 
   datasource:
     url: jdbc:mysql://localhost:3306/osable
+    username: dev
 
 eureka:
   client:
