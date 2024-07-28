@@ -9,7 +9,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http\://discovery.osable.svc.cluster.local\:8761/eureka
+      defaultZone: http://discovery.osable.svc.cluster.local:8761/eureka
   instance:
     hostname: url-shortener.osable.svc.cluster.local
 

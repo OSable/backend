@@ -10,4 +10,7 @@ eureka:
 
 # env:
 # spring.security.oauth2.client.registration.github.client-id
+# SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GITHUB_CLIENTID
+
 # spring.security.oauth2.client.registration.github.client-secret
+# SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GITHUB_CLIENTSECRET
