@@ -31,7 +31,7 @@ class SecurityConfiguration {
         }.csrf {
             // Configure CSRF token
             it.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        }.oauth2ResourceServer()
+        }.oauth2Client()
 
         return http.build()
     }
