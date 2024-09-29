@@ -26,9 +26,10 @@ class GatewayApplication {
         .route { route ->
             route.path("/actuator/**").filters { it.setStatus(HttpStatus.FORBIDDEN) }.uri("no://op")
         }
-//        // URL Shortener route creation configuration
+        // URL Shortener route configuration
         .route { route ->
-            route.path("/url")
+            route.host("api.osable.net").and()
+            .path("/url")
                 .filters { filters ->
                     filters.circuitBreaker { fallbackConfig ->
                         fallbackConfig.name = "urlShortenerCreationFallback"
@@ -40,7 +41,8 @@ class GatewayApplication {
         }
 //        // URL Shortener routes configuration
         .route { route ->
-            route.path("/url/**")
+            route.host("api.osable.net").and()
+            .path("/url/**")
                 .filters { filters ->
                     filters.circuitBreaker { fallbackConfig ->
                         fallbackConfig.name = "urlShortenerRequestsFallback"
