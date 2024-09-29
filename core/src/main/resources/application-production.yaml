@@ -1,10 +1,12 @@
 spring:
-  profiles: production
+  config:
+    activate:
+      on-profile: production
 
 eureka:
   client:
     service-url:
-      defaultZone: http\://discovery.osable.svc.cluster.local\:8761/eureka
+      defaultZone: http://discovery.osable.svc.cluster.local:8761/eureka
   instance:
     hostname: core.osable.svc.cluster.local
 

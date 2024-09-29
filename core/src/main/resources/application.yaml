@@ -1,5 +1,7 @@
 spring:
-  profiles: development, production
+  config:
+    activate:
+      on-profile: development, production
 
   application:
     name: core

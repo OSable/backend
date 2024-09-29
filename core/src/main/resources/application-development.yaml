@@ -1,7 +1,8 @@
 spring:
-  profiles: development
-
   config:
+    activate:
+      on-profile: development
+
     import: optional:secrets.yaml
 
 eureka:
