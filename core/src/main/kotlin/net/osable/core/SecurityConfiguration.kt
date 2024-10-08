@@ -1,7 +1,9 @@
 package net.osable.core
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.env.Environment
 import org.springframework.http.HttpStatus
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.web.SecurityFilterChain
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController
 
 @Configuration
 class SecurityConfiguration {
+
+    @Autowired private lateinit var environment: Environment
 
     @Bean fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http.authorizeHttpRequests {
@@ -32,6 +36,15 @@ class SecurityConfiguration {
             // Configure CSRF token
             it.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
         }.oauth2Client()
+
+
+        // Useful for debugging CSRF
+        if (environment.activeProfiles.contains("development")) {
+            http.exceptionHandling().accessDeniedHandler { request, response, accessDeniedException ->
+                println("Access denied. Cause: ${accessDeniedException.cause} | Message: ${accessDeniedException.message}")
+                accessDeniedException.printStackTrace()
+            }
+        }
 
         return http.build()
     }
