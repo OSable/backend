@@ -43,10 +43,15 @@ class SecurityConfiguration {
         http.exceptionHandling().accessDeniedHandler { request, response, accessDeniedException ->
             println("Access denied. Cause: ${accessDeniedException.cause} | Message: ${accessDeniedException.message}")
             accessDeniedException.printStackTrace()
+            response.status = request.getErrorCode()
         }
 
         http.cors().configurationSource {
-            CorsConfiguration().applyPermitDefaultValues()
+            CorsConfiguration()
+                .applyPermitDefaultValues()
+                .apply {
+                    allowedOrigins = listOf("https://osable.net")
+                }
         }
 
         return http.build()

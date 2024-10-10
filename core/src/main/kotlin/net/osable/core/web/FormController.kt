@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.reactive.function.client.WebClient
 
 @Controller
-// Allow cross-origin requests
-@CrossOrigin
 class FormController {
 
     private val webClient = WebClient.builder()
