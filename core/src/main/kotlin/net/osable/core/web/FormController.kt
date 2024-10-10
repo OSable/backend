@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.reactive.function.client.WebClient
 
 @Controller
+// Allow cross-origin requests
+@CrossOrigin
 class FormController {
 
     private val webClient = WebClient.builder()
@@ -26,8 +28,6 @@ class FormController {
     @PostMapping("/questions", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE], headers = ["Host=api.osable.net"])
     // Method has a void return type, spring MVC tries to find a /questions page to redirect to without this annotation
     @ResponseStatus(HttpStatus.OK)
-    // Allow cross-origin requests from ourselves
-    @CrossOrigin(origins = ["https://osable.net"])
     fun questionsContactRoute(@ModelAttribute contactRequest: ContactRequest) {
         webClient.post()
             .uri(webhookURL)

@@ -38,12 +38,9 @@ class SecurityConfiguration {
         }.oauth2Client()
 
 
-        // Useful for debugging CSRF
-        if (environment.activeProfiles.contains("development")) {
-            http.exceptionHandling().accessDeniedHandler { request, response, accessDeniedException ->
-                println("Access denied. Cause: ${accessDeniedException.cause} | Message: ${accessDeniedException.message}")
-                accessDeniedException.printStackTrace()
-            }
+        http.exceptionHandling().accessDeniedHandler { request, response, accessDeniedException ->
+            println("Access denied. Cause: ${accessDeniedException.cause} | Message: ${accessDeniedException.message}")
+            accessDeniedException.printStackTrace()
         }
 
         return http.build()
