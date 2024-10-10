@@ -13,6 +13,8 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @Configuration
 class SecurityConfiguration {
@@ -41,6 +43,10 @@ class SecurityConfiguration {
         http.exceptionHandling().accessDeniedHandler { request, response, accessDeniedException ->
             println("Access denied. Cause: ${accessDeniedException.cause} | Message: ${accessDeniedException.message}")
             accessDeniedException.printStackTrace()
+        }
+
+        http.cors().configurationSource {
+            CorsConfiguration().applyPermitDefaultValues()
         }
 
         return http.build()
