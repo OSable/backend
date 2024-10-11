@@ -35,15 +35,20 @@ class SecurityConfiguration {
                 .anyRequest().authenticated()
 
         }.csrf {
-            // Configure CSRF token
-            it.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            // Configure CSRF token through a cookie
+            // Setting domain allows sending the cookie on that domain **and subdomains**
+            it.csrfTokenRepository(CookieCsrfTokenRepository().apply {
+                setSecure(true)
+                setCookieHttpOnly(true)
+                setCookieDomain("osable.net")
+            })
         }.oauth2Client()
 
 
         http.exceptionHandling().accessDeniedHandler { request, response, accessDeniedException ->
             println("Access denied. Cause: ${accessDeniedException.cause} | Message: ${accessDeniedException.message}")
             accessDeniedException.printStackTrace()
-            response.status = request.getErrorCode()
+            response.status = HttpStatus.FORBIDDEN.value()
         }
 
         http.cors().configurationSource {
